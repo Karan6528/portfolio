@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { useLang } from '@/contexts/LanguageContext';
 
 export function Hero() {
   const { t } = useLang();
 
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -12,7 +12,7 @@ export function Hero() {
     },
   };
 
-  const item = {
+  const item: Variants = {
     hidden: { y: 100, opacity: 0 },
     show: { y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
   };
