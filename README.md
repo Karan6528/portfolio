@@ -37,3 +37,12 @@ Output goes to `dist/` — deploy to Netlify, Vercel, GitHub Pages, etc.
 - Animated page loader
 - Scroll-triggered section animations
 - Contact form (opens mail client)
+
+git add .
+git commit -m "Describe your change"
+git push
+
+After editing anything locally, run:
+git add .
+git commit -m "Describe your change"
+git push
