@@ -3,7 +3,7 @@ import { useLang } from '@/contexts/LanguageContext';
 import project1Img from '@/assets/project-1.jpg';
 import project2Img from '@/assets/project-2.jpg';
 import project3Img from '@/assets/project-3.jpg';
-import project3Img from '@/assets/project-4.jpg';
+import project4Img from '@/assets/project-4.jpg';
 
 // To use a new image: put it in src/assets/, import it here, and use it below.
 // import project4Img from '@/assets/project-4.jpg';
