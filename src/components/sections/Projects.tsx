@@ -3,8 +3,22 @@ import { useLang } from '@/contexts/LanguageContext';
 import project1Img from '@/assets/project-1.jpg';
 import project2Img from '@/assets/project-2.jpg';
 import project3Img from '@/assets/project-3.jpg';
+import project3Img from '@/assets/project-4.jpg';
 
-const PROJECTS = {
+// To use a new image: put it in src/assets/, import it here, and use it below.
+// import project4Img from '@/assets/project-4.jpg';
+
+interface Project {
+  title: string;
+  category: string;
+  tech: string;
+  image: string;
+  year: string;
+  description: string;
+  link?: string; // optional: GitHub or live demo URL
+}
+
+const PROJECTS: Record<'en' | 'de', Project[]> = {
   en: [
     {
       title: 'Ask Documentor',
@@ -32,6 +46,16 @@ const PROJECTS = {
       year: '2023',
       description:
         'Fraud detection system for credit card transactions using machine learning algorithms. Analyzes transaction behavior patterns to detect fraudulent activity with high accuracy.',
+    },
+    {
+      title: 'Credit Risk Scoring System',
+      category: 'Machine Learning / MLOps',
+      tech: 'Python · XGBoost · SHAP · MLflow · FastAPI · Docker',
+      image: project3Img, // change to project4Img after adding your own image
+      year: '2026',
+      description:
+        'End-to-end credit default prediction system covering the full ML lifecycle. Uses cost-sensitive thresholding instead of a default cutoff, calibrated probabilities, SHAP explainability, drift monitoring, and a Dockerized FastAPI service with CI.',
+      link: 'https://github.com/Karan6528/credit-risk-project',
     },
   ],
   de: [
@@ -61,6 +85,16 @@ const PROJECTS = {
       year: '2023',
       description:
         'Betrugserkennung für Kreditkartentransaktionen mit maschinellen Lernalgorithmen. Analysiert Transaktionsmuster, um betrügerische Aktivitäten mit hoher Genauigkeit zu erkennen.',
+    },
+    {
+      title: 'Kreditrisiko-Scoring-System',
+      category: 'Maschinelles Lernen / MLOps',
+      tech: 'Python · XGBoost · SHAP · MLflow · FastAPI · Docker',
+      image: project3Img, // nach dem Hinzufügen eines eigenen Bildes zu project4Img ändern
+      year: '2026',
+      description:
+        'End-to-End-System zur Vorhersage von Kreditausfällen über den gesamten ML-Lebenszyklus. Nutzt kostensensitive Schwellenwerte statt eines Standard-Cutoffs, kalibrierte Wahrscheinlichkeiten, SHAP-Erklärbarkeit, Drift-Monitoring sowie einen Docker-basierten FastAPI-Service mit CI.',
+      link: 'https://github.com/Karan6528/credit-risk-project',
     },
   ],
 };
@@ -120,6 +154,16 @@ export function Projects() {
                   <h4 className="text-3xl md:text-4xl font-display font-bold mb-4">{project.title}</h4>
                   <p className="text-muted-foreground font-light mb-4 leading-relaxed">{project.description}</p>
                   <p className="font-mono text-xs text-primary/80 mb-8">{project.tech}</p>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block font-mono text-xs uppercase tracking-widest text-primary hover:underline"
+                    >
+                      {t('View project', 'Projekt ansehen')} →
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>
