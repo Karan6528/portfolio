@@ -1,10 +1,40 @@
 import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LanguageContext';
 
-const EXPERIENCE = {
+// Company images: put files in src/assets/companies/ named after the "logo" key
+// below (e.g. scikiq.png, prp.png, spectrics.png). png, jpg, jpeg, svg and webp
+// all work. If a file is missing, that entry simply shows no image.
+const logoFiles = import.meta.glob('../../assets/companies/*.{png,jpg,jpeg,svg,webp}', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>;
+
+function getLogo(key: string): string | undefined {
+  const match = Object.keys(logoFiles).find((path) => {
+    const file = path.split('/').pop() ?? '';
+    return file.replace(/\.[^.]+$/, '').toLowerCase() === key;
+  });
+  return match ? logoFiles[match] : undefined;
+}
+
+interface ExperienceItem {
+  company: string;
+  logo: string; // file name (without extension) in src/assets/companies/
+  location: string;
+  role: string;
+  period: string;
+  description: string;
+  imageClass?: string; // optional Tailwind height class for the image, default max-h-40
+  caption?: string; // optional caption shown under the image
+}
+
+const EXPERIENCE: Record<'en' | 'de', ExperienceItem[]> = {
   en: [
     {
       company: 'ScikIQ Data Private Limited',
+      logo: 'scikiq',
+      imageClass: 'max-h-96',
+      caption: 'Award · Innovative Data Solution Provider — The Economic Times Enterprise AI Awards 2026',
       location: 'Gurugram',
       role: 'Data Science Intern',
       period: '02/2026 — 06/2026',
@@ -13,6 +43,7 @@ const EXPERIENCE = {
     },
     {
       company: 'PRP Technologies',
+      logo: 'prp',
       location: 'Ahmedabad',
       role: 'Data Science Intern',
       period: '01/2025 — 04/2025',
@@ -21,6 +52,7 @@ const EXPERIENCE = {
     },
     {
       company: 'Spectrics Solutions',
+      logo: 'spectrics',
       location: 'Ahmedabad',
       role: 'ReactJS Intern',
       period: '06/2024 — 07/2024',
@@ -31,6 +63,9 @@ const EXPERIENCE = {
   de: [
     {
       company: 'ScikIQ Data Private Limited',
+      logo: 'scikiq',
+      imageClass: 'max-h-96',
+      caption: 'Auszeichnung · Innovative Data Solution Provider — The Economic Times Enterprise AI Awards 2026',
       location: 'Gurugram',
       role: 'Data-Science-Praktikant',
       period: '02/2026 — 06/2026',
@@ -39,6 +74,7 @@ const EXPERIENCE = {
     },
     {
       company: 'PRP Technologies',
+      logo: 'prp',
       location: 'Ahmedabad',
       role: 'Data-Science-Praktikant',
       period: '01/2025 — 04/2025',
@@ -47,6 +83,7 @@ const EXPERIENCE = {
     },
     {
       company: 'Spectrics Solutions',
+      logo: 'spectrics',
       location: 'Ahmedabad',
       role: 'ReactJS-Praktikant',
       period: '06/2024 — 07/2024',
@@ -81,32 +118,60 @@ export function Experience() {
           <div className="absolute left-[7.5px] md:left-1/2 top-0 bottom-0 w-[1px] bg-border" />
 
           <div className="space-y-24">
-            {items.map((exp, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.6 }}
-                className={`relative flex flex-col md:flex-row gap-8 md:gap-0 ${
-                  i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
-              >
-                <div className="absolute left-[7.5px] md:left-1/2 top-0 w-4 h-4 rounded-full bg-primary transform -translate-x-1/2 mt-1.5 ring-4 ring-background" />
+            {items.map((exp, i) => {
+              const logo = getLogo(exp.logo);
+              const textOnLeft = i % 2 === 0;
 
-                <div
-                  className={`pl-12 md:pl-0 md:w-1/2 ${
-                    i % 2 === 0 ? 'md:pr-20 text-left md:text-right' : 'md:pl-20 text-left'
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-100px' }}
+                  transition={{ duration: 0.6 }}
+                  className={`relative flex flex-col md:flex-row gap-8 md:gap-0 ${
+                    textOnLeft ? 'md:flex-row' : 'md:flex-row-reverse'
                   }`}
                 >
-                  <div className="font-mono text-xs text-primary mb-2 uppercase tracking-widest">{exp.period}</div>
-                  <h4 className="text-2xl font-display font-bold mb-1">{exp.role}</h4>
-                  <div className="text-lg font-medium text-foreground mb-1">{exp.company}</div>
-                  <div className="font-mono text-xs text-muted-foreground uppercase tracking-wider mb-4">{exp.location}</div>
-                  <p className="text-muted-foreground font-light leading-relaxed">{exp.description}</p>
-                </div>
-              </motion.div>
-            ))}
+                  <div className="absolute left-[7.5px] md:left-1/2 top-0 w-4 h-4 rounded-full bg-primary transform -translate-x-1/2 mt-1.5 ring-4 ring-background" />
+
+                  {/* Text side */}
+                  <div
+                    className={`pl-12 md:pl-0 md:w-1/2 ${
+                      textOnLeft ? 'md:pr-20 text-left md:text-right' : 'md:pl-20 text-left'
+                    }`}
+                  >
+                    <div className="font-mono text-xs text-primary mb-2 uppercase tracking-widest">{exp.period}</div>
+                    <h4 className="text-2xl font-display font-bold mb-1">{exp.role}</h4>
+                    <div className="text-lg font-medium text-foreground mb-1">{exp.company}</div>
+                    <div className="font-mono text-xs text-muted-foreground uppercase tracking-wider mb-4">{exp.location}</div>
+                    <p className="text-muted-foreground font-light leading-relaxed">{exp.description}</p>
+                  </div>
+
+                  {/* Image side (opposite half of the timeline) */}
+                  {logo && (
+                    <div
+                      className={`pl-12 md:pl-0 md:w-1/2 flex ${
+                        textOnLeft ? 'md:pl-20 md:justify-start' : 'md:pr-20 md:justify-end'
+                      }`}
+                    >
+                      <div className="border border-border bg-background p-4 inline-flex flex-col items-center gap-4 max-w-full">
+                        <img
+                          src={logo}
+                          alt={exp.company}
+                          className={`${exp.imageClass ?? 'max-h-40'} w-auto max-w-full object-contain`}
+                        />
+                        {exp.caption && (
+                          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground text-center max-w-xs">
+                            {exp.caption}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 

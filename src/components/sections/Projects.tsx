@@ -5,6 +5,7 @@ import project2Img from '@/assets/project-2.jpg';
 import project3Img from '@/assets/project-3.jpg';
 import project4Img from '@/assets/project-4.jpg';
 
+
 // To use a new image: put it in src/assets/, import it here, and use it below.
 // import project4Img from '@/assets/project-4.jpg';
 
@@ -51,7 +52,7 @@ const PROJECTS: Record<'en' | 'de', Project[]> = {
       title: 'Credit Risk Scoring System',
       category: 'Machine Learning / MLOps',
       tech: 'Python · XGBoost · SHAP · MLflow · FastAPI · Docker',
-      image: project3Img, // change to project4Img after adding your own image
+      image: project4Img, // change to project4Img after adding your own image
       year: '2026',
       description:
         'End-to-end credit default prediction system covering the full ML lifecycle. Uses cost-sensitive thresholding instead of a default cutoff, calibrated probabilities, SHAP explainability, drift monitoring, and a Dockerized FastAPI service with CI.',
@@ -101,7 +102,7 @@ const PROJECTS: Record<'en' | 'de', Project[]> = {
 
 export function Projects() {
   const { lang, t } = useLang();
-  const projects = PROJECTS[lang];
+  const projects = [...PROJECTS[lang]].sort((a, b) => Number(b.year) - Number(a.year));
 
   return (
     <section id="projects" className="py-32 px-6 md:px-12 bg-foreground text-background">
