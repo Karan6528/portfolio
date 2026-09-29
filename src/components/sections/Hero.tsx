@@ -40,7 +40,7 @@ export function Hero() {
       >
         <div className="overflow-hidden mb-4">
           <motion.div variants={item} className="font-mono text-sm md:text-base uppercase tracking-widest text-primary font-medium">
-            {t('Berlin, Germany', 'Berlin, Deutschland')}
+            {t('Data Scientist & AI Engineer · Berlin, Germany', 'Data Scientist & KI-Ingenieur · Berlin, Deutschland')}
           </motion.div>
         </div>
 
@@ -58,12 +58,25 @@ export function Hero() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="overflow-hidden">
-            <motion.p variants={item} className="text-xl md:text-2xl font-light leading-relaxed max-w-lg">
+            <motion.p variants={item} className="text-lg md:text-xl font-light leading-relaxed max-w-lg">
               {t(
-                'Computer Engineering graduate specializing in Data Science, AI/ML, and full-stack web development.',
-                'Informatik-Absolvent mit Schwerpunkt auf Data Science, KI/ML und Full-Stack-Webentwicklung.'
+                'M.Sc. student in Data Science, AI & Digital Business at Gisma University of Applied Sciences (Berlin), with a B.E. in Computer Engineering. Experienced in machine learning, time series forecasting, and LLM applications such as RAG systems and AI chatbots.',
+                'M.Sc.-Student in Data Science, KI & Digital Business an der Gisma University of Applied Sciences (Berlin) mit einem B.E. in Computertechnik. Erfahrung in maschinellem Lernen, Zeitreihenprognosen und LLM-Anwendungen wie RAG-Systemen und KI-Chatbots.'
               )}
             </motion.p>
+            <motion.div
+              variants={item}
+              className="mt-6 inline-flex items-center gap-3 border border-border px-4 py-2 font-mono text-xs uppercase tracking-widest"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+              </span>
+              {t(
+                'Open to working student roles & internships · Germany',
+                'Offen für Werkstudentenstellen & Praktika · Deutschland'
+              )}
+            </motion.div>
           </div>
           <div className="flex flex-col justify-end items-start md:items-end overflow-hidden">
             <motion.div variants={item} className="flex flex-wrap gap-4">
@@ -85,22 +98,24 @@ export function Hero() {
         </div>
       </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-12 left-6 md:left-12 flex items-center gap-4"
-      >
-        <span className="font-mono text-xs uppercase tracking-widest rotate-[-90deg] origin-left ml-2">Scroll</span>
-        <div className="w-[1px] h-24 bg-border relative overflow-hidden">
-          <motion.div
-            className="w-full h-1/2 bg-foreground absolute top-0"
-            animate={{ top: ['-50%', '100%'] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: 'linear' }}
-          />
-        </div>
-      </motion.div>
+      {/* Scroll indicator (bottom centre, away from the text) */}
+      <div className="hidden md:flex absolute bottom-6 inset-x-0 justify-center pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="flex flex-col items-center gap-3"
+        >
+          <span className="font-mono text-xs uppercase tracking-widest">Scroll</span>
+          <div className="w-[1px] h-14 bg-border relative overflow-hidden">
+            <motion.div
+              className="w-full h-1/2 bg-foreground absolute top-0"
+              animate={{ top: ['-50%', '100%'] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: 'linear' }}
+            />
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }
