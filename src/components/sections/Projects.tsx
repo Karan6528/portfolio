@@ -34,7 +34,7 @@ const PROJECTS: Record<'en' | 'de', Project[]> = {
       title: 'Time Series Forecasting',
       category: 'Machine Learning',
       tech: 'Python · Scikit-learn · Pandas · Matplotlib',
-      image: project2Img,
+      image: project1Img,
       year: '2024',
       description:
         'Financial market forecasting system that analyzes historical stock data and predicts future price trends. Includes data preprocessing, model training, and result visualization to support informed decision-making.',
@@ -64,7 +64,7 @@ const PROJECTS: Record<'en' | 'de', Project[]> = {
       title: 'Ask Documentor',
       category: 'KI / Full-Stack',
       tech: 'Next.js · JavaScript · Redux · Docker · Python · FastAPI',
-      image: project1Img,
+      image: project2Img,
       year: '2024',
       description:
         'PDFs hochladen und mit ihrem Inhalt interagieren — über Fragen und Zusammenfassungen. Skalierbare Lösung mit Next.js für das Frontend, FastAPI für das Backend und LLM-gestützter Dokumentenintelligenz.',
