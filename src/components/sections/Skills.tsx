@@ -24,16 +24,32 @@ const SKILLS_DE = [
 ];
 
 const TECH_TAGS = [
-  'Python', 'JavaScript', 'Java', 'C', 'SQL', 'HTML', 'MATLAB',
-  'ReactJS', 'Next.js', 'Node.js', 'FastAPI', 'Bootstrap',
-  'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib', 'Streamlit',
-  'Docker', 'Git', 'Postman', 'OpenCV', 'Arduino', 'Raspberry Pi',
-  'VS Code', 'Weka', 'XAMPP',
+  'Python', 'JavaScript', 'Java', 'C', 'SQL', 'MySQL', 'HTML', 'CSS', 'MATLAB',
+  'ReactJS', 'Next.js', 'Node.js', 'Redux', 'FastAPI', 'Bootstrap',
+  'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib', 'Streamlit', 'OpenCV', 'Weka',
+  'LLMs', 'RAG', 'NLP', 'Generative AI',
+  'Docker', 'Git', 'GitHub', 'Postman', 'Wireshark', 'VS Code',
+  'Arduino', 'Raspberry Pi', 'XAMPP',
+];
+
+const CERTIFICATIONS = [
+  'Postman Fundamentals Student Expert',
+  'Python for Data Science – Simplilearn',
+  'Build Your Own ChatGPT with Open-Source LLMs – LetsUpgrade',
+  'Cyber Security and Ethical Hacking Bootcamp',
+  'JavaScript Zero to Hero',
+  'Graphic Design Course – LetsUpgrade',
 ];
 
 export function Skills() {
   const { lang, t } = useLang();
   const skills = lang === 'en' ? SKILLS_EN : SKILLS_DE;
+
+  const languages = [
+    { name: t('English', 'Englisch'), level: t('Advanced', 'Fortgeschritten') },
+    { name: t('German', 'Deutsch'), level: t('Elementary', 'Grundkenntnisse') },
+    { name: t('Hindi', 'Hindi'), level: t('Native', 'Muttersprache') },
+  ];
 
   return (
     <section id="skills" className="py-32 px-6 md:px-12 bg-background">
@@ -95,6 +111,44 @@ export function Skills() {
                 {tag}
               </motion.span>
             ))}
+          </div>
+        </motion.div>
+
+        {/* Certifications & Languages */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 pt-16 border-t border-border grid grid-cols-1 md:grid-cols-2 gap-16"
+        >
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-8">
+              {t('Certifications', 'Zertifikate')}
+            </p>
+            <ul className="space-y-3 font-light">
+              {CERTIFICATIONS.map((cert) => (
+                <li key={cert} className="flex gap-4">
+                  <span className="text-primary font-mono">—</span>
+                  <span>{cert}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-8">
+              {t('Languages', 'Sprachen')}
+            </p>
+            <ul className="space-y-3">
+              {languages.map((l) => (
+                <li key={l.name} className="flex justify-between border-b border-border pb-3">
+                  <span className="font-display font-medium">{l.name}</span>
+                  <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                    {l.level}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </motion.div>
       </div>

@@ -46,14 +46,14 @@ export function About() {
               <div className="space-y-6 text-lg text-muted-foreground font-light leading-relaxed">
                 <p>
                   {t(
-                    'I am a Computer Engineering graduate from Vishwakarma Government Engineering College (CGPA 8.59), passionate about building intelligent systems — from machine learning models to full-stack web applications.',
-                    'Ich bin Absolvent der Computertechnik vom Vishwakarma Government Engineering College (CGPA 8,59) und begeistere mich für den Aufbau intelligenter Systeme — von Machine-Learning-Modellen bis hin zu Full-Stack-Webanwendungen.'
+                    'From October 2026 I am pursuing an M.Sc. in Data Science, AI and Digital Business at Gisma University of Applied Sciences in Berlin. I hold a B.E. in Computer Engineering from Vishwakarma Government Engineering College (CGPA 8.59) and enjoy building intelligent systems — from machine learning models to full-stack web applications.',
+                    'Ab Oktober 2026 absolviere ich den M.Sc. Data Science, KI und Digital Business an der Gisma University of Applied Sciences in Berlin. Zuvor habe ich den B.E. in Computertechnik am Vishwakarma Government Engineering College abgeschlossen (CGPA 8,59) und begeistere mich für den Aufbau intelligenter Systeme — von Machine-Learning-Modellen bis hin zu Full-Stack-Webanwendungen.'
                   )}
                 </p>
                 <p>
                   {t(
-                    'With hands-on experience in LLMs, RAG systems, data pipelines, and React-based frontends, I bridge the gap between data intelligence and user-facing products. Currently interning at ScikIQ Data Pvt. Ltd., working on enterprise AI solutions.',
-                    'Mit praktischer Erfahrung in LLMs, RAG-Systemen, Datenpipelines und React-Frontends verbinde ich Datenintelligenz mit nutzerorientierter Produktentwicklung. Derzeit Praktikant bei ScikIQ Data Pvt. Ltd. mit Fokus auf KI-Lösungen für Unternehmen.'
+                    'Three internships gave me hands-on experience with LLMs, RAG systems, data pipelines, and React-based frontends, so I can bridge data intelligence and user-facing products. I am looking for a data science internship or working student position in Germany.',
+                    'Drei Praktika haben mir praktische Erfahrung mit LLMs, RAG-Systemen, Datenpipelines und React-Frontends gegeben, sodass ich Datenintelligenz mit nutzerorientierter Produktentwicklung verbinden kann. Ich suche ein Praktikum oder eine Werkstudentenstelle im Bereich Data Science in Deutschland.'
                   )}
                 </p>
               </div>

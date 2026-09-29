@@ -1,8 +1,26 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LanguageContext';
 
+const EMAIL = 'lodhak376@gmail.com';
+
+const LINKS = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/karanlodha', text: 'linkedin.com/in/karanlodha' },
+  { label: 'GitHub', href: 'https://github.com/Karan6528', text: 'github.com/Karan6528' },
+];
+
 export function Contact() {
   const { t } = useLang();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Portfolio message from ${name}`);
+    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+  };
 
   return (
     <section id="contact" className="py-32 px-6 md:px-12 bg-primary text-primary-foreground">
@@ -22,35 +40,40 @@ export function Contact() {
             </h3>
             <p className="text-lg font-light text-primary-foreground/80 max-w-md mb-10">
               {t(
-                "Open to internships, full-time roles, and freelance projects in Data Science, AI/ML, or Web Development. Let's build something meaningful.",
-                'Offen für Praktika, Festanstellungen und Freelance-Projekte in Data Science, KI/ML oder Webentwicklung. Lassen Sie uns etwas Sinnvolles aufbauen.'
+                "Looking for a data science internship or working student position in Germany. Also open to AI/ML and web development projects. Let's build something meaningful.",
+                'Ich suche ein Praktikum oder eine Werkstudentenstelle im Bereich Data Science in Deutschland und bin offen für Projekte in KI/ML und Webentwicklung. Lassen Sie uns etwas Sinnvolles aufbauen.'
               )}
             </p>
 
             <div className="space-y-4 font-mono text-sm">
               <a
-                href="mailto:lodhak376@gmail.com"
+                href={`mailto:${EMAIL}`}
                 className="flex items-center gap-4 group hover:text-primary-foreground transition-colors"
               >
-                <span className="text-primary-foreground/50 uppercase tracking-widest text-xs">
+                <span className="text-primary-foreground/50 uppercase tracking-widest text-xs w-20">
                   {t('Email', 'E-Mail')}
                 </span>
-                <span className="group-hover:underline">lodhak376@gmail.com</span>
+                <span className="group-hover:underline">{EMAIL}</span>
               </a>
-              <a
-                href="tel:+919173995958"
-                className="flex items-center gap-4 group hover:text-primary-foreground transition-colors"
-              >
-                <span className="text-primary-foreground/50 uppercase tracking-widest text-xs">
-                  {t('Phone', 'Telefon')}
-                </span>
-                <span className="group-hover:underline">+91 9173995958</span>
-              </a>
+              {LINKS.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 group hover:text-primary-foreground transition-colors"
+                >
+                  <span className="text-primary-foreground/50 uppercase tracking-widest text-xs w-20">
+                    {link.label}
+                  </span>
+                  <span className="group-hover:underline">{link.text}</span>
+                </a>
+              ))}
               <div className="flex items-center gap-4">
-                <span className="text-primary-foreground/50 uppercase tracking-widest text-xs">
+                <span className="text-primary-foreground/50 uppercase tracking-widest text-xs w-20">
                   {t('Location', 'Standort')}
                 </span>
-                <span>{t('Ahmedabad, Gujarat, India', 'Ahmedabad, Gujarat, Indien')}</span>
+                <span>{t('Berlin, Germany', 'Berlin, Deutschland')}</span>
               </div>
             </div>
           </motion.div>
@@ -62,13 +85,7 @@ export function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col justify-center"
           >
-            <form
-              className="space-y-8"
-              onSubmit={(e) => {
-                e.preventDefault();
-                window.location.href = 'mailto:lodhak376@gmail.com';
-              }}
-            >
+            <form className="space-y-8" onSubmit={handleSubmit}>
               <div className="space-y-2 border-b border-primary-foreground/30 pb-2">
                 <label className="font-mono text-xs uppercase tracking-widest text-primary-foreground/70">
                   {t('Name', 'Name')}
@@ -76,6 +93,8 @@ export function Contact() {
                 <input
                   type="text"
                   required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="w-full bg-transparent border-none outline-none text-xl font-light placeholder:text-primary-foreground/30"
                   placeholder={t('Your name', 'Ihr Name')}
                 />
@@ -88,6 +107,8 @@ export function Contact() {
                 <input
                   type="email"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-transparent border-none outline-none text-xl font-light placeholder:text-primary-foreground/30"
                   placeholder={t('your@email.com', 'ihre@email.de')}
                 />
@@ -100,6 +121,8 @@ export function Contact() {
                 <textarea
                   rows={3}
                   required
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   className="w-full bg-transparent border-none outline-none text-xl font-light placeholder:text-primary-foreground/30 resize-none"
                   placeholder={t('How can I help?', 'Wie kann ich helfen?')}
                 />

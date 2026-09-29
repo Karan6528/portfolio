@@ -1,5 +1,6 @@
 import { motion, type Variants } from 'framer-motion';
 import { useLang } from '@/contexts/LanguageContext';
+import cvFile from '@/assets/Karan_lodha_CV.pdf';
 
 export function Hero() {
   const { t } = useLang();
@@ -39,7 +40,7 @@ export function Hero() {
       >
         <div className="overflow-hidden mb-4">
           <motion.div variants={item} className="font-mono text-sm md:text-base uppercase tracking-widest text-primary font-medium">
-            {t('Ahmedabad, Gujarat, India', 'Ahmedabad, Gujarat, Indien')}
+            {t('Berlin, Germany', 'Berlin, Deutschland')}
           </motion.div>
         </div>
 
@@ -65,13 +66,20 @@ export function Hero() {
             </motion.p>
           </div>
           <div className="flex flex-col justify-end items-start md:items-end overflow-hidden">
-            <motion.div variants={item} className="flex gap-4">
+            <motion.div variants={item} className="flex flex-wrap gap-4">
               <button
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                 className="px-8 py-4 bg-foreground text-background font-mono text-sm uppercase tracking-widest hover:bg-primary transition-colors"
               >
                 {t('View Projects', 'Projekte ansehen')}
               </button>
+              <a
+                href={cvFile}
+                download="Karan_Lodha_CV.pdf"
+                className="px-8 py-4 border border-foreground font-mono text-sm uppercase tracking-widest hover:bg-foreground hover:text-background transition-colors"
+              >
+                {t('Download CV', 'Lebenslauf herunterladen')}
+              </a>
             </motion.div>
           </div>
         </div>
