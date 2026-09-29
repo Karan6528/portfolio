@@ -187,7 +187,23 @@ export function Experience() {
           </h3>
           <div className="space-y-8">
             <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-16">
-              <div className="font-mono text-xs text-muted-foreground uppercase tracking-widest whitespace-nowrap pt-1">2022 — 2025</div>
+              <div className="font-mono text-xs text-muted-foreground uppercase tracking-widest whitespace-nowrap pt-1 md:w-40 shrink-0">
+                {t('2026 — Present', '2026 — heute')}
+              </div>
+              <div>
+                <div className="text-xl font-display font-bold mb-1">
+                  {t('M.Sc. Data Science, AI and Digital Business', 'M.Sc. Data Science, KI und Digital Business')}
+                </div>
+                <div className="text-muted-foreground font-light">
+                  Gisma University of Applied Sciences
+                </div>
+                <div className="font-mono text-xs text-primary mt-1">
+                  {t('Berlin, Germany', 'Berlin, Deutschland')}
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-16">
+              <div className="font-mono text-xs text-muted-foreground uppercase tracking-widest whitespace-nowrap pt-1 md:w-40 shrink-0">2022 — 2025</div>
               <div>
                 <div className="text-xl font-display font-bold mb-1">
                   {t('B.E. Computer Engineering', 'B.E. Computertechnik')}
@@ -199,7 +215,7 @@ export function Experience() {
               </div>
             </div>
             <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-16">
-              <div className="font-mono text-xs text-muted-foreground uppercase tracking-widest whitespace-nowrap pt-1">2019 — 2022</div>
+              <div className="font-mono text-xs text-muted-foreground uppercase tracking-widest whitespace-nowrap pt-1 md:w-40 shrink-0">2019 — 2022</div>
               <div>
                 <div className="text-xl font-display font-bold mb-1">
                   {t('Diploma in Computer Engineering', 'Diplom in Computertechnik')}

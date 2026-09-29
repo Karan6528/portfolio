@@ -46,9 +46,10 @@ export function Skills() {
   const skills = lang === 'en' ? SKILLS_EN : SKILLS_DE;
 
   const languages = [
-    { name: t('English', 'Englisch'), level: t('Advanced', 'Fortgeschritten') },
-    { name: t('German', 'Deutsch'), level: t('Elementary', 'Grundkenntnisse') },
-    { name: t('Hindi', 'Hindi'), level: t('Native', 'Muttersprache') },
+    { name: t('Gujarati', 'Gujarati'), level: t('Native', 'Muttersprache'), dots: 5 },
+    { name: t('Hindi', 'Hindi'), level: t('Native', 'Muttersprache'), dots: 5 },
+    { name: t('English', 'Englisch'), level: t('Advanced', 'Fortgeschritten'), dots: 4 },
+    { name: t('German', 'Deutsch'), level: t('Elementary', 'Grundkenntnisse'), dots: 2 },
   ];
 
   return (
@@ -141,10 +142,20 @@ export function Skills() {
             </p>
             <ul className="space-y-3">
               {languages.map((l) => (
-                <li key={l.name} className="flex justify-between border-b border-border pb-3">
+                <li key={l.name} className="flex items-center justify-between border-b border-border pb-3">
                   <span className="font-display font-medium">{l.name}</span>
-                  <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                    {l.level}
+                  <span className="flex items-center gap-4">
+                    <span className="flex gap-1">
+                      {[0, 1, 2, 3, 4].map((d) => (
+                        <span
+                          key={d}
+                          className={`w-2 h-2 rounded-full ${d < l.dots ? 'bg-primary' : 'bg-border'}`}
+                        />
+                      ))}
+                    </span>
+                    <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground w-28 text-right">
+                      {l.level}
+                    </span>
                   </span>
                 </li>
               ))}

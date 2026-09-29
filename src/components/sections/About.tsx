@@ -2,6 +2,16 @@ import { motion } from 'framer-motion';
 import { useLang } from '@/contexts/LanguageContext';
 import avatarImg from '@/assets/avatar.jpg';
 
+
+const PROFILE: [string, string][] = [
+  ['role', '"Data Scientist & AI Engineer"'],
+  ['studying', '"M.Sc. Data Science, AI & Digital Business @ Gisma"'],
+  ['based_in', '"Berlin, Germany"'],
+  ['builds', '["RAG systems", "AI chatbots", "forecasting models", "risk scoring"]'],
+  ['stack', '["Python", "SQL", "Scikit-learn", "FastAPI", "Docker", "React"]'],
+  ['languages', '["English", "German", "Hindi", "Gujarati"]'],
+];
+
 export function About() {
   const { t } = useLang();
 
@@ -46,8 +56,8 @@ export function About() {
               <div className="space-y-6 text-lg text-muted-foreground font-light leading-relaxed">
                 <p>
                   {t(
-                    'From October 2026 I am pursuing an M.Sc. in Data Science, AI and Digital Business at Gisma University of Applied Sciences in Berlin. I hold a B.E. in Computer Engineering from Vishwakarma Government Engineering College (CGPA 8.59) and enjoy building intelligent systems — from machine learning models to full-stack web applications.',
-                    'Ab Oktober 2026 absolviere ich den M.Sc. Data Science, KI und Digital Business an der Gisma University of Applied Sciences in Berlin. Zuvor habe ich den B.E. in Computertechnik am Vishwakarma Government Engineering College abgeschlossen (CGPA 8,59) und begeistere mich für den Aufbau intelligenter Systeme — von Machine-Learning-Modellen bis hin zu Full-Stack-Webanwendungen.'
+                    'I am currently pursuing an M.Sc. in Data Science, AI and Digital Business at Gisma University of Applied Sciences in Berlin. I hold a B.E. in Computer Engineering from Vishwakarma Government Engineering College (CGPA 8.59) and enjoy building intelligent systems — from machine learning models to full-stack web applications.',
+                    'Derzeit absolviere ich den M.Sc. Data Science, KI und Digital Business an der Gisma University of Applied Sciences in Berlin. Zuvor habe ich den B.E. in Computertechnik am Vishwakarma Government Engineering College abgeschlossen (CGPA 8,59) und begeistere mich für den Aufbau intelligenter Systeme — von Machine-Learning-Modellen bis hin zu Full-Stack-Webanwendungen.'
                   )}
                 </p>
                 <p>
@@ -76,6 +86,30 @@ export function About() {
                   <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                     {t('CGPA', 'CGPA')}
                   </div>
+                </div>
+              </div>
+
+              {/* profile.py card */}
+              <div className="mt-12 bg-foreground text-background font-mono text-xs md:text-sm p-6 overflow-x-auto">
+                <div className="text-background/50 mb-4"># profile.py</div>
+                <div className="leading-relaxed whitespace-pre">
+{PROFILE.map(([key, value]) => (
+  <div key={key}>
+    {'    '}
+    <span className="text-sky-300">{`"${key}"`}</span>
+    {': '}
+    <span className="text-emerald-300">{value}</span>
+    {','}
+  </div>
+))}
+                </div>
+                <div className="mt-4">
+                  <span className="text-background/50">{'>>> '}</span>
+                  {'karan["open_to"]'}
+                </div>
+                <div className="text-emerald-300">
+                  {t('"working student / internship in Germany"', '"Werkstudent / Praktikum in Deutschland"')}
+                  <span className="inline-block w-2 h-4 bg-background ml-1 align-middle animate-pulse" />
                 </div>
               </div>
             </motion.div>
