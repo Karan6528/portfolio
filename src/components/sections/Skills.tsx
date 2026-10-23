@@ -24,7 +24,7 @@ const SKILLS_DE = [
 ];
 
 const TECH_TAGS = [
-  'Python', 'JavaScript', 'Java', 'C', 'SQL', 'MySQL', 'HTML', 'CSS', 'MATLAB',
+  'Python', 'JavaScript', 'Java', 'C', 'SQL', 'MySQL', 'SQLite', 'Excel', 'HTML', 'CSS', 'MATLAB',
   'ReactJS', 'Next.js', 'Node.js', 'Redux', 'FastAPI', 'Bootstrap',
   'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib', 'Streamlit', 'OpenCV', 'Weka',
   'LLMs', 'RAG', 'NLP', 'Generative AI',
