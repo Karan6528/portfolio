@@ -1,6 +1,7 @@
 import { motion, type Variants } from 'framer-motion';
 import { useLang } from '@/contexts/LanguageContext';
 import cvFile from '@/assets/Karan_lodha_CV.pdf';
+import { HeroInsights } from './HeroInsights';
 
 export function Hero() {
   const { t } = useLang();
@@ -36,8 +37,13 @@ export function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="max-w-7xl mx-auto w-full z-10"
+        className="relative max-w-7xl mx-auto w-full z-10"
       >
+        {/* Findings panel in the empty space on the right (large screens only) */}
+        <div className="hidden xl:block absolute right-0 top-0 w-[420px]">
+          <HeroInsights />
+        </div>
+
         <div className="overflow-hidden mb-4">
           <motion.div variants={item} className="font-mono text-sm md:text-base uppercase tracking-widest text-primary font-medium">
             {t('Data Scientist & AI Engineer · Berlin, Germany', 'Data Scientist & KI-Ingenieur · Berlin, Deutschland')}
