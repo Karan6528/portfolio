@@ -7,8 +7,9 @@ const PROFILE: [string, string][] = [
   ['role', '"Data Scientist & AI Engineer"'],
   ['studying', '"M.Sc. Data Science, AI & Digital Business @ Gisma"'],
   ['based_in', '"Berlin, Germany"'],
-  ['builds', '["RAG systems", "AI chatbots", "forecasting models", "risk scoring"]'],
-  ['stack', '["Python", "SQL", "Scikit-learn", "FastAPI", "Docker", "React"]'],
+  ['worked_at', '["ScikIQ", "PRP Technologies", "Spectrics Solutions"]'],
+  ['builds', '["RAG systems", "AI chatbots", "ML models", "funnel analytics", "dashboards"]'],
+  ['stack', '["Python", "SQL", "Excel", "Scikit-learn", "FastAPI", "Docker", "React"]'],
   ['languages', '["English", "German", "Hindi", "Gujarati"]'],
 ];
 
@@ -50,43 +51,42 @@ export function About() {
                 {t('01 // About', '01 // Profil')}
               </h2>
               <h3 className="text-4xl md:text-5xl font-display font-bold leading-tight mb-8">
-                {t('Data Science. AI/ML. Web Development.', 'Data Science. KI/ML. Webentwicklung.')}
+                {t('Data Science. AI/ML. Business Analytics.', 'Data Science. KI/ML. Business Analytics.')}
               </h3>
 
               <div className="space-y-6 text-lg text-muted-foreground font-light leading-relaxed">
                 <p>
                   {t(
-                    'I am currently pursuing an M.Sc. in Data Science, AI and Digital Business at Gisma University of Applied Sciences in Berlin. I hold a B.E. in Computer Engineering from Vishwakarma Government Engineering College (CGPA 8.59) and enjoy building intelligent systems — from machine learning models to full-stack web applications.',
-                    'Derzeit absolviere ich den M.Sc. Data Science, KI und Digital Business an der Gisma University of Applied Sciences in Berlin. Zuvor habe ich den B.E. in Computertechnik am Vishwakarma Government Engineering College abgeschlossen (CGPA 8,59) und begeistere mich für den Aufbau intelligenter Systeme — von Machine-Learning-Modellen bis hin zu Full-Stack-Webanwendungen.'
+                    "I'm doing my M.Sc. in Data Science, AI & Digital Business at Gisma in Berlin. Before that I studied Computer Engineering in Ahmedabad: first a diploma at R.C. Technical Institute (CGPA 9.41), then a B.E. at Vishwakarma Government Engineering College (CGPA 8.59).",
+                    'Ich mache meinen M.Sc. in Data Science, KI & Digital Business an der Gisma in Berlin. Davor habe ich in Ahmedabad Computertechnik studiert: zuerst ein Diplom am R.C. Technical Institute (CGPA 9,41), dann den B.E. am Vishwakarma Government Engineering College (CGPA 8,59).'
                   )}
                 </p>
                 <p>
                   {t(
-                    'Three internships gave me hands-on experience with LLMs, RAG systems, data pipelines, and React-based frontends, so I can bridge data intelligence and user-facing products. I am looking for a data science internship or working student position in Germany.',
-                    'Drei Praktika haben mir praktische Erfahrung mit LLMs, RAG-Systemen, Datenpipelines und React-Frontends gegeben, sodass ich Datenintelligenz mit nutzerorientierter Produktentwicklung verbinden kann. Ich suche ein Praktikum oder eine Werkstudentenstelle im Bereich Data Science in Deutschland.'
+                    'In three internships I built RAG systems and AI chatbots at ScikIQ, predictive models and Streamlit dashboards at PRP Technologies, and React frontends at Spectrics. So I know both sides: the model, and the screen someone actually uses it on.',
+                    'In drei Praktika habe ich RAG-Systeme und KI-Chatbots bei ScikIQ gebaut, Vorhersagemodelle und Streamlit-Dashboards bei PRP Technologies und React-Frontends bei Spectrics. Ich kenne also beide Seiten: das Modell und die Oberfläche, mit der jemand wirklich arbeitet.'
+                  )}
+                </p>
+                <p>
+                  {t(
+                    "Lately I've been doing more analytics with SQL and Excel, and building ML projects the way they would run in a company, with tests, Docker and monitoring. I'm looking for a working student job or an internship in data science or analytics in Germany.",
+                    'Zuletzt habe ich mehr Analytics mit SQL und Excel gemacht und ML-Projekte so gebaut, wie sie in einer Firma laufen würden, mit Tests, Docker und Monitoring. Ich suche eine Werkstudentenstelle oder ein Praktikum in Data Science oder Analytics in Deutschland.'
                   )}
                 </p>
               </div>
 
-              <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-8 border-t border-border pt-12">
-                <div>
-                  <div className="text-4xl font-display font-bold text-foreground mb-2">9+</div>
-                  <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                    {t('Major Projects', 'Hauptprojekte')}
+              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-border pt-12">
+                {[
+                  { value: '3', label: t('Internships', 'Praktika') },
+                  { value: '6', label: t('Projects', 'Projekte') },
+                  { value: '8.59', label: t('B.E. CGPA', 'B.E. CGPA') },
+                  { value: '9.41', label: t('Diploma CGPA', 'Diplom CGPA') },
+                ].map((stat) => (
+                  <div key={stat.label}>
+                    <div className="text-4xl font-display font-bold text-foreground mb-2">{stat.value}</div>
+                    <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{stat.label}</div>
                   </div>
-                </div>
-                <div>
-                  <div className="text-4xl font-display font-bold text-foreground mb-2">3</div>
-                  <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                    {t('Internships', 'Praktika')}
-                  </div>
-                </div>
-                <div>
-                  <div className="text-4xl font-display font-bold text-foreground mb-2">8.59</div>
-                  <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                    {t('CGPA', 'CGPA')}
-                  </div>
-                </div>
+                ))}
               </div>
 
               {/* profile.py card */}
